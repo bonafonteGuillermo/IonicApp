@@ -17,8 +17,13 @@ import { ProvidersMoviesProvider } from '../../providers/providers-movies/provid
 })
 export class HomePage {
 
+
+  movies : any[] = []
   constructor(public navCtrl: NavController, public navParams: NavParams, private moviesProvider : ProvidersMoviesProvider) {
-    this.moviesProvider.getTopRatedMovies();
+    //this.moviesProvider.getTopRatedMovies();
+    this.moviesProvider.getTopRatedMovies()
+    .subscribe (res => this.movies = res);
+
   }
 
   ionViewDidLoad() {

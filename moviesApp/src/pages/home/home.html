@@ -15,4 +15,10 @@
 
 <ion-content padding>
 
+  <ion-list>
+    <button ion-item *ngFor="let movie of movies" (click)="movieSelected(item)">
+      {{ movie.title }}
+    </button>  
+  </ion-list>
+
 </ion-content>
