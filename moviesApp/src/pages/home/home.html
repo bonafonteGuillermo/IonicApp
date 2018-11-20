@@ -5,20 +5,16 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>home</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
-  <ion-list>
-    <button ion-item *ngFor="let movie of movies" (click)="movieSelected(item)">
-      {{ movie.title }}
-    </button>  
-  </ion-list>
-
+    <ion-item no-lines no-padding *ngFor="let movie of movies">
+        <div>
+            <img src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}" />
+        </div>
+    </ion-item>
+  
 </ion-content>

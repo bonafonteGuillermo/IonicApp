@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProvidersMoviesProvider } from '../../providers/providers-movies/providers-movies';
 
-
 /**
  * Generated class for the HomePage page.
  *
@@ -17,17 +16,14 @@ import { ProvidersMoviesProvider } from '../../providers/providers-movies/provid
 })
 export class HomePage {
 
-
   movies : any[] = []
   constructor(public navCtrl: NavController, public navParams: NavParams, private moviesProvider : ProvidersMoviesProvider) {
-    //this.moviesProvider.getTopRatedMovies();
     this.moviesProvider.getTopRatedMovies()
-    .subscribe (res => this.movies = res);
-
+    .subscribe (res => {
+      this.movies = res
+      console.log(res)
+    });
   }
 
-  ionViewDidLoad() {
-    //this.moviesProvider.getTopRatedMovies();
-  }
-
+  ionViewDidLoad() {}
 }
