@@ -4,16 +4,42 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{movie.title}}
-      </ion-card-title>
-      <p>
-        {{movie.overview}}
-      </p>
-    </ion-card-content>
-  </ion-card>
+<ion-content class="content">
+  <div class="movie">
+    <img class="movie-img" src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}"/>
+    <ion-grid>
+        <ion-row  xs>
+          <ion-col col-12 class="movie-title"><h1>{{movie.title}}</h1></ion-col>
+        </ion-row>
+        <ion-row xs>
+          <ion-col class="movie-details">Release date: {{movie.release_date}}</ion-col>
+        </ion-row>
+       <ion-row xs>
+            <ion-col col-6><h5 class="movie-summary">SUMMARY</h5></ion-col>
+            <ion-col col-3>
+              <button ion-button icon-left clear>
+                <ion-icon name="chatbubbles"></ion-icon>
+                <span class="buttonText">{{movie.vote_count}}</span>
+              </button>
+            </ion-col>
+            <ion-col col-3>
+                <button ion-button icon-left clear>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <span class="buttonText">{{movie.vote_average}}</span>
+                </button>
+              </ion-col>
+        </ion-row>
+        <ion-row xs>
+            <ion-col class="movie-description">{{movie.overview}}</ion-col>
+        </ion-row>
+        <ion-row xs>
+            <ion-col>
+                <button ion-button outline item-end icon-start>
+                    <ion-icon name="heart"></ion-icon>
+                    Add to favourites
+                  </button>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div>
 </ion-content>

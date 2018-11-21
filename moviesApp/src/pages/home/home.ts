@@ -35,6 +35,7 @@ export class HomePage {
       console.log(res)
     });
 
+    //Select default segment
     this.movies_section = "top_rated";
   }
 

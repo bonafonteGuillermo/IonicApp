@@ -30,10 +30,11 @@
     <ion-list *ngSwitchCase="'top_rated'">
       <ion-item *ngFor="let movie of topRatedMovies" (click)="movieCardClicked(movie)">
         <ion-thumbnail item-start>
-          <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+          <img src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
         </ion-thumbnail>
         <h2>{{movie.title}}</h2>
         <p>{{movie.release_date}}</p>
+        <ion-icon id="ic_favourite" item-bottom name="star"></ion-icon>
         <button ion-button clear item-end>View</button>
       </ion-item>
     </ion-list>
@@ -41,10 +42,11 @@
     <ion-list *ngSwitchCase="'now_playing'">
         <ion-item *ngFor="let movie of nowPlayingMovies" (click)="movieCardClicked(movie)">
           <ion-thumbnail item-start>
-            <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+            <img src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
           </ion-thumbnail>
           <h2>{{movie.title}}</h2>
           <p>{{movie.release_date}}</p>
+          <ion-icon id="ic_favourite" item-bottom name="star"></ion-icon>
           <button ion-button clear item-end>View</button>
         </ion-item>
       </ion-list>
@@ -52,10 +54,11 @@
       <ion-list *ngSwitchCase="'popular'">
           <ion-item *ngFor="let movie of popularMovies" (click)="movieCardClicked(movie)">
             <ion-thumbnail item-start>
-              <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+              <img src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
             </ion-thumbnail>
             <h2>{{movie.title}}</h2>
             <p>{{movie.release_date}}</p>
+            <ion-icon id="ic_favourite" item-bottom name="star"></ion-icon>
             <button ion-button clear item-end>View</button>
           </ion-item>
         </ion-list>
