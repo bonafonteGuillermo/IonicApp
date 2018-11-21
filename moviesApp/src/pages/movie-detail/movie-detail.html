@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{movie.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{movie.title}}
+      </ion-card-title>
+      <p>
+        {{movie.overview}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
