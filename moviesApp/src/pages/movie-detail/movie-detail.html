@@ -34,10 +34,10 @@
         </ion-row>
         <ion-row xs>
             <ion-col>
-                <button ion-button outline item-end icon-start>
+                <button ion-button outline item-end icon-start (click)="addToFavouritesClicked(movie)">
                     <ion-icon name="heart"></ion-icon>
-                    Add to favourites
-                  </button>
+                    {{addToFavouritesBtnText}}
+                </button>
             </ion-col>
         </ion-row>
       </ion-grid>

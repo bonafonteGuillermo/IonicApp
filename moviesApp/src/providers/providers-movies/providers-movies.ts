@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { Movie } from '../../model/Movie';
 
 /*
   Generated class for the ProvidersMoviesProvider provider.
@@ -17,18 +18,18 @@ export class ProvidersMoviesProvider {
 
   constructor(public http: HttpClient) {}
 
-  getTopRatedMovies() : Observable<any>{
+  getTopRatedMovies() : Observable<Movie[]>{
     return this.http.get(this.baseUrl+'movie/top_rated'+this.API_key)
-      .pipe( map( (res: any) => res.results));
+      .pipe( map( (res: any) => res.results.map((movie: Movie) => new Movie().deserialize(movie))));
   }
 
-  getNowPlayingMovies() : Observable<any>{
+  getNowPlayingMovies() : Observable<Movie[]>{
     return this.http.get(this.baseUrl+'movie/now_playing'+this.API_key)
-      .pipe( map( (res: any) => res.results));
+    .pipe( map( (res: any) => res.results.map((movie: Movie) => new Movie().deserialize(movie))));
   }
 
-  getPopularMovies() : Observable<any>{
+  getPopularMovies() : Observable<Movie[]>{
     return this.http.get(this.baseUrl+'movie/popular'+this.API_key)
-      .pipe( map( (res: any) => res.results));
+    .pipe( map( (res: any) => res.results.map((movie: Movie) => new Movie().deserialize(movie))));
   }
 }

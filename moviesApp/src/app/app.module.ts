@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MovieDetailPage } from '../pages/movie-detail/movie-detail';
 import { ProvidersMoviesProvider } from '../providers/providers-movies/providers-movies';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProvidersMoviesProvider } from '../providers/providers-movies/providers
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +33,8 @@ import { ProvidersMoviesProvider } from '../providers/providers-movies/providers
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProvidersMoviesProvider
+    ProvidersMoviesProvider,
+    IonicStorageModule
   ]
 })
 export class AppModule {}

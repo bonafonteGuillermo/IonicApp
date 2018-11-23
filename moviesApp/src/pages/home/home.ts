@@ -1,3 +1,4 @@
+import { Movie } from './../../model/Movie';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProvidersMoviesProvider } from '../../providers/providers-movies/providers-movies';
@@ -10,9 +11,9 @@ import { MovieDetailPage } from '../movie-detail/movie-detail';
 })
 export class HomePage {
 
-  topRatedMovies : any[] = []
-  nowPlayingMovies : any[] = []
-  popularMovies : any[] = []
+  topRatedMovies : Movie[] = []
+  nowPlayingMovies : Movie[] = []
+  popularMovies : Movie[] = []
   movies_section : string
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private moviesProvider : ProvidersMoviesProvider) {
@@ -20,19 +21,16 @@ export class HomePage {
     this.moviesProvider.getTopRatedMovies()
     .subscribe (res => {
       this.topRatedMovies = res
-      console.log(res)
     });
 
     this.moviesProvider.getNowPlayingMovies()
     .subscribe (res => {
       this.nowPlayingMovies = res
-      console.log(res)
     });
 
     this.moviesProvider.getPopularMovies()
     .subscribe (res => {
       this.popularMovies = res
-      console.log(res)
     });
 
     //Select default segment
