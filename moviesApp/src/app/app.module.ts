@@ -1,3 +1,4 @@
+import { FavouritesPage } from './../pages/favourites/favourites';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -10,11 +11,17 @@ import { HomePage } from '../pages/home/home';
 import { MovieDetailPage } from '../pages/movie-detail/movie-detail';
 import { ProvidersMoviesProvider } from '../providers/providers-movies/providers-movies';
 import { IonicStorageModule } from '@ionic/storage';
+import { ProvidersFavouritesProvider } from '../providers/providers-favourites/providers-favourites';
+import { SearchPage } from './../pages/search/search';
+import { TabsPage } from './../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
     MyApp,
+    TabsPage,
+    FavouritesPage,
     HomePage,
+    SearchPage,
     MovieDetailPage
   ],
   imports: [
@@ -27,13 +34,17 @@ import { IonicStorageModule } from '@ionic/storage';
   entryComponents: [
     MyApp,
     HomePage,
-    MovieDetailPage
+    MovieDetailPage,
+    FavouritesPage,
+    SearchPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProvidersMoviesProvider,
+    ProvidersFavouritesProvider,
     IonicStorageModule
   ]
 })
