@@ -1,3 +1,5 @@
+import { Movie } from './../../model/Movie';
+import { ProvidersFavouritesProvider } from './../../providers/providers-favourites/providers-favourites';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,11 +17,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FavouritesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  favouriteMovies : Array<Movie> = []
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavouritesPage');
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private favouritesProvider : ProvidersFavouritesProvider
+  ){}
 
+  ionViewDidEnter(){
+    this.favouritesProvider.getMoviesFromLocalStorage().then(
+      (moviesArray) => { 
+        if(moviesArray.lenght !== 0){
+          this.favouriteMovies = moviesArray
+        }
+      });
+  }
 }
