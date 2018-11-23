@@ -3,13 +3,6 @@ import { ProvidersFavouritesProvider } from './../../providers/providers-favouri
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the FavouritesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-favourites',
@@ -26,11 +19,18 @@ export class FavouritesPage {
   ){}
 
   ionViewDidEnter(){
+    this.loadFavourites()
+  }
+
+  slideRemoveClicked(favouriteMovie : Movie){
+    this.favouritesProvider.deleteMovieFromLocalStorage(favouriteMovie.id)
+    this.loadFavourites()
+    //TODO REFRESH THE LIST
+  }
+
+  loadFavourites(){
+    this.favouriteMovies.length = 0
     this.favouritesProvider.getMoviesFromLocalStorage().then(
-      (moviesArray) => { 
-        if(moviesArray.lenght !== 0){
-          this.favouriteMovies = moviesArray
-        }
-      });
+      (moviesArray) => { this.favouriteMovies = moviesArray });
   }
 }

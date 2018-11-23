@@ -2,7 +2,6 @@ import { Movie } from './../../model/Movie';
 import { Observable } from "rxjs";
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Movie } from '../../model/Movie';
 
 @Injectable()
 export class ProvidersFavouritesProvider {
