@@ -28,15 +28,23 @@ export class MovieDetailPage {
     private favouritesProvider : ProvidersFavouritesProvider) 
   {
     this.movie = navParams.data.movie;
-      this.favouritesProvider.getMovieFromLocalStorage(this.movie.id).then(
-        (isFound) => {
-          if(isFound != true){
-            this.setFavouriteBtnText(this.stringAddFavourites)
-          }else{
-            this.setFavouriteBtnText(this.stringRemoveFavourites)
-          }
+  }
+
+  ionViewDidEnter(){
+    this.checkIfIsFavourite()
+    
+  }
+
+  checkIfIsFavourite(){
+    this.favouritesProvider.getMovieFromLocalStorage(this.movie.id).then(
+      (isFound) => {
+        if(isFound != true){
+          this.setFavouriteBtnText(this.stringAddFavourites)
+        }else{
+          this.setFavouriteBtnText(this.stringRemoveFavourites)
         }
-      );
+      }
+    );
   }
 
   addToFavouritesClicked(movie){

@@ -22,11 +22,12 @@ export class ProvidersFavouritesProvider {
   }
 
   deleteMovieFromLocalStorage(movieId) {
-    this.storage.get(this.storageFileName).then((val) => {
-      this.favouriteMovies = JSON.parse(val)
-      this.storage.clear()
-      var resultArray = this.favouriteMovies.filter(movie => movie.id !== movieId)
-      this.storage.set(this.storageFileName, JSON.stringify(resultArray));
+    return this.storage.get(this.storageFileName).then(
+      (val) => {
+        this.favouriteMovies = JSON.parse(val)
+        this.storage.clear()
+        var resultArray = this.favouriteMovies.filter(movie => movie.id !== movieId)
+        this.storage.set(this.storageFileName, JSON.stringify(resultArray));
     });
   }
 
@@ -48,7 +49,7 @@ export class ProvidersFavouritesProvider {
   }
 
   getMoviesFromLocalStorage() {
-    this.favouriteMovies.length = 0 //MAYBE NOT NEEDED!!!!
+    this.favouriteMovies.length = 0
     return this.storage.get(this.storageFileName).then(
       (val) => {
         if(val != null){

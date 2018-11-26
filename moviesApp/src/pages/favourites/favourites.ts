@@ -24,13 +24,12 @@ export class FavouritesPage {
 
   slideRemoveClicked(favouriteMovie : Movie){
     this.favouritesProvider.deleteMovieFromLocalStorage(favouriteMovie.id)
-    this.loadFavourites()
-    //TODO REFRESH THE LIST
+    .then( (it) => this.loadFavourites())
   }
 
   loadFavourites(){
     this.favouriteMovies.length = 0
-    this.favouritesProvider.getMoviesFromLocalStorage().then(
-      (moviesArray) => { this.favouriteMovies = moviesArray });
+    this.favouritesProvider.getMoviesFromLocalStorage()
+    .then( (moviesArray) => { this.favouriteMovies = moviesArray })
   }
 }
