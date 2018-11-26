@@ -1,12 +1,8 @@
+import { Movie } from './../../model/Movie';
+import { ProvidersMoviesProvider } from './../../providers/providers-movies/providers-movies';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { MovieDetailPage } from '../movie-detail/movie-detail';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  movieName : string
+  searchedMovies : Array<Movie> = []
+  constructor(public navCtrl: NavController, public navParams: NavParams, private movieProvider: ProvidersMoviesProvider) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+    this.movieName = ""
+    this.searchedMovies = []
   }
 
+  searchMovie(){
+    console.log(this.movieName);
+    this.movieProvider.getMovie(this.movieName)
+    .subscribe (res => {
+      this.searchedMovies = res
+    });
+    
+  }
+
+  searchedMovieSelected(searchedMovie : Movie){
+    this.navCtrl.push(MovieDetailPage, {movie : searchedMovie});
+  }
 }

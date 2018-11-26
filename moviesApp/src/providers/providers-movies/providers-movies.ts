@@ -32,4 +32,9 @@ export class ProvidersMoviesProvider {
     return this.http.get(this.baseUrl+'movie/popular'+this.API_key)
     .pipe( map( (res: any) => res.results.map((movie: Movie) => new Movie().deserialize(movie))));
   }
+
+  getMovie(movieName : string): Observable<Movie[]>{
+    return this.http.get(this.baseUrl+'search/movie'+this.API_key+"&query="+movieName)
+    .pipe( map( (res: any) => res.results.map((movie: Movie) => new Movie().deserialize(movie))));
+  }
 }

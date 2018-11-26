@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>favourites</ion-title>
+    <ion-title>Favourites</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 <ion-content padding>
       <ion-list>
           <ion-item-sliding *ngFor="let favouriteMovie of favouriteMovies">
-              <ion-item>
+              <ion-item (click)="favouriteMovieDetail(favouriteMovie)">
                   <ion-avatar item-start>
                     <img src="http://image.tmdb.org/t/p/w154{{favouriteMovie.poster_path}}">
                   </ion-avatar>
