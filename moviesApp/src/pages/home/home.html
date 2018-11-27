@@ -5,14 +5,62 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>home</ion-title>
+    <ion-title>The Movies App</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="movies_section">
+      <ion-segment-button value="top_rated">
+        Top rated
+      </ion-segment-button>
+      <ion-segment-button value="now_playing">
+        Now playing
+      </ion-segment-button>
+      <ion-segment-button value="popular">
+        Popular
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
+  <div [ngSwitch]="movies_section">
+    <ion-list *ngSwitchCase="'top_rated'">
+      <ion-item *ngFor="let movie of topRatedMovies" (click)="movieCardClicked(movie)">
+        <ion-thumbnail item-start>
+          <img src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
+        </ion-thumbnail>
+        <h2>{{movie.title}}</h2>
+        <p>{{movie.release_date}}</p>
+        <ion-icon id="ic_favourite" item-bottom name="star"></ion-icon>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'now_playing'">
+        <ion-item *ngFor="let movie of nowPlayingMovies" (click)="movieCardClicked(movie)">
+          <ion-thumbnail item-start>
+            <img src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
+          </ion-thumbnail>
+          <h2>{{movie.title}}</h2>
+          <p>{{movie.release_date}}</p>
+          <ion-icon id="ic_favourite" item-bottom name="star"></ion-icon>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'popular'">
+          <ion-item *ngFor="let movie of popularMovies" (click)="movieCardClicked(movie)">
+            <ion-thumbnail item-start>
+              <img src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
+            </ion-thumbnail>
+            <h2>{{movie.title}}</h2>
+            <p>{{movie.release_date}}</p>
+            <ion-icon id="ic_favourite" item-bottom name="star"></ion-icon>
+            <button ion-button clear item-end>View</button>
+          </ion-item>
+        </ion-list>
+  </div>
 </ion-content>

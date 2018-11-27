@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+  <ion-item>
+      <ion-searchbar [(ngModel)]="movieName" type="text" placeholder="Movie name"></ion-searchbar>
+    </ion-item>
+    <div padding>
+        <button ion-button block (click)="searchMovie()">Search</button>
+        </div>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <button ion-item *ngFor="let searchedMovie of searchedMovies" (click)="searchedMovieSelected(searchedMovie)">
+          {{ searchedMovie.title }}
+        </button>  
+    </ion-list>
+</ion-content>
